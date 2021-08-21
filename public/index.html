@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Todo App</title>
+    <meta name="description" content="A FeathersJS server">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+        font-weight: 400;
+        font-size: 16px;
+        color: #2c3e50;
+      }
+
+      .center-text {
+        text-align: center;
+      }
+
+      main {
+        padding: 20px 60px;
+      }
+
+      img.logo {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-size: 2em;
+        font-weight: 100;
+      }
+
+      footer {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+      }
+
+      footer p {
+        font-weight: 300;
+        font-size: 1.0em;
+      }
+
+      a {
+        color: #3cf;
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        color: #3cf;
+      }
+
+      header {
+        padding: 30px;
+        text-align: center;
+      }
+
+      p span {
+        background-color: lightgray;
+        padding: 0 10px;
+      }
+
+table {
+  margin-bottom: 50px;
+  margin-top: 20px;
+	width: 800px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+	color: black;
+}
+
+th {
+	text-align: left;
+}
+
+th {
+	background-color: #55608f;
+}
+
+tr {
+  border-bottom: solid 1px #ccc;
+}
+
+tr:hover {
+  background-color: rgba(255,255,255,0.3);
+}
+
+td {
+		position: relative;
+}
+td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255,255,255,0.2);
+  z-index: -1;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+h2 span {
+  padding: 5px 10px;
+  background-color: lemonchiffon;
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>API Documentation</h1>
+    </header>
+    <main class="container">
+      <h2>Create a new user <span>/users</span></h2>
+      <table>
+        <tr>
+          <td>Request Method</td>
+          <td>POST</td>
+        </tr>
+        <tr>
+          <td>Request Payload</td>
+          <td>
+            <pre>
+{
+  "firstname": "John",
+  "lastname": "Doe",
+  "email": "johndoe@gmail.com",
+  "password": "test123"
+}
+            </pre>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Payload</td>
+          <td>
+<pre>
+{
+  "id":1,
+  "firstname":"Bodunde",
+  "lastname":"Adebiyi",
+  "email":"bodunadebiyi@gmail.com",
+  "updatedAt":"2021-08-21T18:24:30.656Z",
+  "createdAt":"2021-08-21T18:24:30.656Z"
+}
+</pre>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Status Code</td>
+          <td>201</td>
+        </tr>
+      </table>
+      <h2>Login <span>/authentication</span></h2>
+      <table>
+        <tr>
+          <td>Request Method</td>
+          <td>POST</td>
+        </tr>
+        <tr>
+          <td>Request Payload</td>
+          <td>
+            <pre>
+{
+  "email": "johndoe@gmail.com",
+  "password": "test123"
+}
+            </pre>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Payload</td>
+          <td>
+<pre>
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.
+  eyJpYXQiOjE2Mjk1NzEwMTIsImV4cCI6MTYyOTY1NzQxMiwiYXVkIjoiaHR0
+  cHM6Ly95b3VyZG9tYWluLmNvbSIsImlzcyI6ImZlYXRoZXJzIiwic3ViIjoi
+  MSIsImp0aSI6ImFmNjhjZTgxLWIwNDQtNDBhYi04YTBkLWJiNjk0YmI4Njk0
+  OCJ9.jqx9NAaWdaxU8XDKKNqnDiCwewEDEktPoaD2316OMj8"
+}
+</pre>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Status Code</td>
+          <td>201</td>
+        </tr>
+      </table>
+      <h2>Create Todo Item <span>/todos</span></h2>
+      <table>
+        <tr>
+          <td>Request Method</td>
+          <td>POST</td>
+        </tr>
+        <tr>
+          <td>Request Payload</td>
+          <td>
+            <pre>
+{
+  "userId": "1",
+  "description": "A new todo item"
+}
+            </pre>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Payload</td>
+          <td>
+<pre>
+{
+  "complete": 0,
+  "id": 3,
+  "description": "get a really good and sexy nap",
+  "userId": 1,
+  "updatedAt": "2021-08-21T19:37:29.393Z",
+  "createdAt": "2021-08-21T19:37:29.393Z"
+}
+</pre>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Status Code</td>
+          <td>201</td>
+        </tr>
+      </table>
+      <h2>Fetch todo item for user <span>/todos?userId=&lt;user_id&gt;</span></h2>
+      <table>
+        <tr>
+          <td>Request Method</td>
+          <td>GET</td>
+        </tr>
+        <tr>
+          <td>Response Payload</td>
+          <td>
+<pre>
+{
+  "total": 2,
+  "limit": 10,
+  "skip": 0,
+  "data":[
+    {"id": 2, "description": "do my l…},
+    {"id": 3, "description": "get a …}
+  ]
+}
+</pre>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Status Code</td>
+          <td>200</td>
+        </tr>
+      </table>
+      <h2>Fetch single todo item <span>/todos&lt;todo_id&gt;</span></h2>
+      <table>
+        <tr>
+          <td>Request Method</td>
+          <td>GET</td>
+        </tr>
+        <tr>
+          <td>Response Payload</td>
+          <td>
+<pre>
+{
+  "id": &lt;todo_id&gt;,
+  "description": "do my laundry today",
+  "complete": 0,
+  "createdAt": "2021-08-21T19:37:02.000Z",
+  "updatedAt": "2021-08-21T19:37:02.000Z",
+  "userId": 1
+}
+</pre>
+          </td>
+        </tr>
+        <tr>
+          <td>Response Status Code</td>
+          <td>200</td>
+        </tr>
+      </table>
+      <h2>Update single todo item <span>/todos&lt;todo_id&gt;</span></h2>
+      <table>
+        <tr>
+          <td>Request Method</td>
+          <td>PATCH</td>
+        </tr>
+        <tr>
+          <td>Request Payload</td>
+          <td>
+<pre>
+{
+  "complete": 1,
+}
+</pre>
+          </td>
+        </tr>
+<tr>
+  <td>Response Payload</td>
+  <td>
+    <pre>
+{
+  "id": &lt;todo_id&gt;,
+  "description": "do my laundry today",
+  "complete": 1,
+  "createdAt": "2021-08-21T19:37:02.000Z",
+  "updatedAt": "2021-08-21T19:37:02.000Z",
+  "userId": 1
+}
+    </pre>
+</td>
+</tr>
+        <tr>
+          <td>Response Status Code</td>
+          <td>200</td>
+        </tr>
+      </table>
+      <h2>Delete single todo item <span>/todos&lt;todo_id&gt;</span></h2>
+      <table>
+        <tr>
+          <td>Request Method</td>
+          <td>DELETE</td>
+        </tr>
+  <td>Response Payload</td>
+  <td>
+    <pre>
+{
+  "id": &lt;todo_id&gt;,
+  "description": "do my laundry today",
+  "complete": 1,
+  "createdAt": "2021-08-21T19:37:02.000Z",
+  "updatedAt": "2021-08-21T19:37:02.000Z",
+  "userId": 1
+}
+    </pre>
+</td>
+</tr>
+        <tr>
+          <td>Response Status Code</td>
+          <td>200</td>
+        </tr>
+      </table>
+      <footer>
+        <p class="center-text">Bodunde Adebiyi Inc.</p>
+      </footer>
+    </main>
+  </body>
+</html>
