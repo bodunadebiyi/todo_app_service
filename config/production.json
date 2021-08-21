@@ -1,5 +1,5 @@
 {
   "host": "bee-todo-app.herokuapp.com",
   "port": "PORT",
-  "mysql": "CLEARDB_DATABASE_URL"
+  "mysql": "JAWSDB_URL"
 }
